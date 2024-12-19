@@ -1,101 +1,108 @@
-import Image from "next/image";
+import Aboutme from "@/components/Aboutme";
+import ContactCard from "@/components/ContactCard";
+import Divider from "@/components/Divider";
+import MainLayout from "@/components/MainLayout";
+import PresentationCard from "@/components/PresentationCard";
+import ProjetCard from "@/components/ProjectsCard";
+import QuoteCard from "@/components/QuoteCard";
+import SkillsCard from "@/components/SkillsCard";
 
-export default function Home() {
+const text = {
+  key: "introduction",
+  presentation:
+    "Folli is a <a class='text-[#C778DD] font-extrabold text-'>web designer</a> and <a class='text-[#C778DD] font-extrabold text-'>front-end developer</a>",
+  text: "He crafts responsive websites where technologies meet creativity",
+  image: "https://github.com/follijulio.png"
+};
+
+const quote = {
+  text:
+    "Ser Radical é agarrar as coisas pela raiz. E a raiz para o homem é o próprio homem",
+  author: "Karl Marx"
+};
+
+const projects = [
+  {
+    id: "1",
+    name: "quotes",
+    descrition: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    image: "",
+    link: "/projects/quotes",
+    technologies: ["javascript", "html", "css"]
+  },
+  {
+    id: "2",
+    name: "quotes",
+    descrition: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    image: "",
+    link: "/projects/quotes",
+    technologies: ["javascript", "html", "css"]
+  },
+  {
+    id: "3",
+    name: "quotes",
+    descrition: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    image: "",
+    link: "/projects/quotes",
+    technologies: ["javascript", "html", "css"]
+  },
+  {
+    id: "4",
+    name: "quotes",
+    descrition: "Lorem ipsum dolor sit amet",
+    image: "",
+    link: "/projects/quotes",
+    technologies: ["javascript", "html", "css"]
+  }
+];
+const page: React.FC = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <MainLayout>
+      <main className="flex flex-col justify-center items-center gap-20">
+        <PresentationCard
+          introduction={text.presentation}
+          text={text.text}
+          image={text.image}
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <QuoteCard author={quote.author} text={quote.text} />
+        <div className="w-full flex flex-col gap-16">
+          <Divider text={"projects"} link={"/works"} />
+          <div className="grid grid-cols-3 gap-4">
+            {projects.slice(0, 3).map(project => {
+              return (
+                <ProjetCard
+                  key={project.id}
+                  descrition={project.descrition}
+                  image={project.image}
+                  link={project.link}
+                  name={project.name}
+                  technologies={project.technologies}
+                  id={""}
+                />
+              );
+            })}
+          </div>
+          <Divider text={"skills"} divider={true} />
+          <SkillsCard />
+          <Divider text="about-me" />
+          <Aboutme />
+          <div className="w-full h-56 flex flex-col">
+            <Divider text="contacts" />
+            <div className="w-full h-full flex flex-row justify-between">
+              <div className="w-1/2 ">
+                <p className="font-medium text-base text-[#ABB2BF]">
+                  I’m interested in freelance opportunities. However, if you
+                  have other request or question, don’t hesitate to contact me
+                </p>
+              </div>
+              <div className="h-full w-1/2 flex justify-end items-end" >
+              <ContactCard />
+              </div>
+            </div>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    </MainLayout>
   );
-}
+};
+export default page;

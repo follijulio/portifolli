@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+
+
+.image-move {
+  object-fit: cover;
+  animation: mudar-forma 15s infinite;
+}
+
+@keyframes mudar-forma {
+  0%, 100% {
+      border-radius: 100% 0% 100% 0% / 0% 100% 0% 100%;
+  }
+  
+  10% {
+      border-radius: 27% 73% 40% 60% / 56% 53% 47% 44%;
+  }
+  20% {
+    border-radius: 75% 25% 77% 23% / 66% 80% 20% 34%;
+  }
+  30% {
+    border-radius: 71% 29% 21% 79% / 52% 75% 25% 48%;
+  }
+  40% {
+    border-radius: 30% 70% 11% 89% / 59% 66% 34% 41%;
+  }
+  50% {
+    border-radius: 85% 15% 80% 20% / 29% 72% 28% 71%;
+  }
+  60% {
+    border-radius: 35% 65% 44% 56% / 50% 60% 40% 55%;
+  }
+  70% {
+    border-radius: 32% 40% 66% 5% / 29% 36% 64% 21%;
+  }
+  80% {
+    border-radius: 87% 13% 84% 16% / 39% 62% 33% 67%;
+  }
+  90% {
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  }
+  
+}
